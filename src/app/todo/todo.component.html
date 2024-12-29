@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-5 berkshire-swash-regular">MY TODOS</h1>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="input-group mb-3">
+        <input [(ngModel)]="TodoItemObj.Title" type="text" class="form-control" placeholder="Add new todo"
+          aria-label="Add new todo" aria-describedby="button-addon3" />
+        <button class="btn btn-primary" type="button" id="button-addon3" (click)="saveTodo()">
+          Add
+        </button>
+      </div>
+
+      <ul class="list-group mt-5">
+        @for (item of todos; track $index)
+        {
+        <li class="mb-4">
+          <div id="checklist" class="p-3">
+            <div class="d-flex flex-row align-items-center">
+              <input value="1" name="r" type="checkbox" id="01" [(ngModel)]="item.Status"
+                (change)="toggleTodoStatus(item)" />
+              <label for="01">{{item.Title}}</label>
+            </div>
+            <button class="list-btn" (click)="deleteTodo(item.Id)">
+              Delete
+            </button>
+          </div>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
